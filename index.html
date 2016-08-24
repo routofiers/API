@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>api by routofiers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">api</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/routofiers/API" class="btn">View on GitHub</a>
+      <a href="https://github.com/routofiers/API/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/routofiers/API/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="routofy-b2b-integration-documentation" class="anchor" href="#routofy-b2b-integration-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Routofy B2B Integration Documentation</strong>
+</h2>
+
+<hr>
+
+<h3>
+<a id="iframe-url" class="anchor" href="#iframe-url" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>iFrame URL</strong>
+</h3>
+
+<p><em>BASE_URL/dashboard/?vendorKey=ABC123&amp;tokenNo=token1&amp;txnId=txn1</em></p>
+
+<p><strong>Explanation:</strong></p>
+
+<ul>
+<li>BASE_URL: 
+
+<ul>
+<li>
+<code>Testing: http://staging.routofy.com</code> </li>
+<li><code>Production: https://www.routofy.com</code></li>
+</ul>
+</li>
+<li>vendorKey: <code>Unique Vendor key provided by Routofy to partners.</code>
+</li>
+<li>tokenNo: <code>Partner generated user token number.</code> <em>Should have one to one mapping with a unique user</em>
+</li>
+<li>txnId: <code>Partner generated transaction ID</code> <em>Should have one to one mapping with each transaction and login session</em>
+</li>
+</ul>
+
+<hr>
+
+<h3>
+<a id="apis-to-be-provided-by-partners" class="anchor" href="#apis-to-be-provided-by-partners" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>APIs TO BE PROVIDED BY PARTNERS</strong>
+</h3>
+
+<h4>
+<a id="required" class="anchor" href="#required" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Required</strong>
+</h4>
+
+<h4>
+<a id="1-purpose" class="anchor" href="#1-purpose" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>1. Purpose</strong>
+</h4>
+
+<p><em>Fetching verified user details for automatic authentication and for auto-filling travelling passengers</em></p>
+
+<h4>
+<a id="url" class="anchor" href="#url" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL</strong>
+</h4>
+
+<p><code>As chosen by partner</code></p>
+
+<p><strong>Recommended:</strong></p>
+
+<p>VENDOR_BASE_URL/vendor/user/details</p>
+
+<p><strong>Example:</strong>  </p>
+
+<ul>
+<li>Vendor : googol </li>
+<li>User access token: AY132A871234</li>
+<li>Transaction Id: jkas3204-asljkd123-asdkj12-alksjd134</li>
+<li>
+<p>Api Key(Optional): 2766491asd723</p>
+
+<p>Example Url: <a href="https://www.googol.com/vendor/user/details?uat=AY132A871234&amp;txnId=jkas3204-asljkd123-asdkj12-alksjd134&amp;apiKey=2766491asd723">https://www.googol.com/vendor/user/details?uat=AY132A871234&amp;txnId=jkas3204-asljkd123-asdkj12-alksjd134&amp;apiKey=2766491asd723</a></p>
+</li>
+</ul>
+
+<h4>
+<a id="method" class="anchor" href="#method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Method:</strong>
+</h4>
+
+<p><em>GET</em></p>
+
+<h4>
+<a id="query-params" class="anchor" href="#query-params" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Query Params</strong>
+</h4>
+
+<p><strong>Required:</strong></p>
+
+<p><code>uat : Partner generated user token number</code> <em>Should have one to one mapping with a unique user</em></p>
+
+<p><code>txnId : Partner generated transaction ID</code> <em>Should have one to one mapping with each transaction and login session</em></p>
+
+<p><strong>Optional:</strong></p>
+
+<p><code>apiKey : The provided api key by partner to Routofy to authenticate API requests</code></p>
+
+<h4>
+<a id="headers" class="anchor" href="#headers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Headers</strong>
+</h4>
+
+<p><code>Content-Type = application/json</code></p>
+
+<p><code>Accept = application/json</code></p>
+
+<h4>
+<a id="data-params" class="anchor" href="#data-params" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Data Params</strong>
+</h4>
+
+<p><code>Nothing</code></p>
+
+<h4>
+<a id="success-response" class="anchor" href="#success-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Success Response:</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> 200</li>
+<li>
+<p><strong>Sample Content:</strong> <a href="#travel-group-rest-dto">TRAVEL GROUP REST DTO</a></p>
+
+<pre><code>{
+     "fn":"Prateek",
+     "ln":"Grover",
+     "em":"prateekgrover.rns@gmail.com",
+     "mb":9999999999,
+     "psgrs":[
+         {
+             "fn":"TravellerOneFirstName",
+             "ln":"TravellerOneLastName",
+             "em":"travelleroneemailid@gmail.com",
+             "dob":1465037004000,
+             "sx":"female",
+             "mobNo":9999999999,
+             "pp":"ABCD123",
+             "pc":"India",
+             "pi":1465037004000,
+             "pe":1465037004000
+         },
+         {
+             "fn":"TravellerTwoFirstName",
+             "ln":"TravellerTwoLastName",
+             "em":"travelleroneemailid@gmail.com",
+             "dob":1465037004000,
+             "sx":"female",
+             "mobNo":9999999999,
+             "pp":"ABCD123",
+             "pc":"India",
+             "pi":1465037004000,
+             "pe":1465037004000
+         }
+     ]
+}
+</code></pre>
+
+<p>NOTE: If travelling passenger list is not known, then send empty list (<code>[]</code>) in "psgrs".</p>
+</li>
+<li><p><strong>Explanation:</strong> <code>See</code> <a href="#travel-group-rest-dto">TRAVEL GROUP REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code></p></li>
+</ul>
+
+<h4>
+<a id="error-response" class="anchor" href="#error-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Error Response:</strong>
+</h4>
+
+<p><code>See</code> <a href="#partner-common-error-responses">partner common error responses</a> <code>section</code></p>
+
+<hr>
+
+<hr>
+
+<h4>
+<a id="optional" class="anchor" href="#optional" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Optional</strong>
+</h4>
+
+<h4>
+<a id="2-purpose" class="anchor" href="#2-purpose" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>2. Purpose</strong>
+</h4>
+
+<p><em>Authorizing an action for a user</em></p>
+
+<h4>
+<a id="url-1" class="anchor" href="#url-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL</strong>
+</h4>
+
+<p><code>As chosen by partner</code></p>
+
+<p><strong>Recommended:</strong></p>
+
+<p><em>VENDOR_BASE_URL/itinerary/vendor/confirm</em></p>
+
+<p><strong>Example:</strong>  </p>
+
+<ul>
+<li>Vendor : googol </li>
+<li>User access token: AY132A871234</li>
+<li>Transaction Id: jkas3204-asljkd123-asdkj12-alksjd134</li>
+<li>
+<p>Api Key(Optional): 2766491asd723</p>
+
+<p>Example Url: <a href="https://www.googol.com/itinerary/vendor/confirm?uat=AY132A871234&amp;txnId=jkas3204-asljkd123-asdkj12-alksjd134&amp;apiKey=2766491asd723">https://www.googol.com/itinerary/vendor/confirm?uat=AY132A871234&amp;txnId=jkas3204-asljkd123-asdkj12-alksjd134&amp;apiKey=2766491asd723</a></p>
+</li>
+</ul>
+
+<h4>
+<a id="method-1" class="anchor" href="#method-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Method:</strong>
+</h4>
+
+<p><em>POST</em></p>
+
+<h4>
+<a id="url-params" class="anchor" href="#url-params" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL Params</strong>
+</h4>
+
+<p><strong>Required:</strong></p>
+
+<p><code>uat : Partner generated user token number</code> <em>Should have one to one mapping with a unique user</em></p>
+
+<p><code>txnId : Partner generated transaction ID</code> <em>Should have one to one mapping with each transaction and login session</em></p>
+
+<p><strong>Optional:</strong></p>
+
+<p><code>apiKey : The provided api key by partner to Routofy to authenticate API requests</code></p>
+
+<h4>
+<a id="headers-1" class="anchor" href="#headers-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Headers</strong>
+</h4>
+
+<p><code>Content-Type = application/json</code></p>
+
+<p><code>Accept = application/json</code></p>
+
+<h4>
+<a id="data-params-1" class="anchor" href="#data-params-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Data Params</strong>
+</h4>
+
+<ul>
+<li>
+<p><strong>Required Post Body:</strong> <a href="#authorization-request-rest-dto">AUTHORIZATION REQUEST REST DTO</a></p>
+
+<pre><code>{
+   "amount":2000,
+   "action":"book"
+}
+</code></pre>
+</li>
+<li><p><strong>Explanation:</strong> <code>See</code> <a href="#authorization-request-rest-dto">AUTHORIZATION REQUEST REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code></p></li>
+</ul>
+
+<h4>
+<a id="success-response-1" class="anchor" href="#success-response-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Success Response:</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> 200</li>
+<li>
+<strong>Sample Content:</strong> <a href="authorization-response-rest-dto">AUTHORIZATION RESPONSE REST DTO</a>
+</li>
+</ul>
+
+<pre><code>  {
+      "code": "0",
+      "message": "authorized",
+      "reason": "admin"
+  }
+</code></pre>
+
+<ul>
+<li>
+<strong>Explanation:</strong> <code>See</code> <a href="#authorization-response-rest-dto">AUTHORIZATION RESPONSE REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code>
+</li>
+</ul>
+
+<h4>
+<a id="error-response-1" class="anchor" href="#error-response-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Error Response:</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> Other than 200 for failed response. </li>
+<li><strong>Content:</strong></li>
+</ul>
+
+<pre><code>{
+    "code":"error code here",
+    "message":"error message here",
+    "reason":"error reason here"
+}
+</code></pre>
+
+<hr>
+
+<hr>
+
+<h4>
+<a id="optional-1" class="anchor" href="#optional-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Optional</strong>
+</h4>
+
+<p>NOTE: <strong>Required</strong> if partner needs to store booking details of each booking.</p>
+
+<h4>
+<a id="3-purpose" class="anchor" href="#3-purpose" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>3. Purpose</strong>
+</h4>
+
+<p><em>Acknowledgement of a completed action by a user</em></p>
+
+<h4>
+<a id="url-2" class="anchor" href="#url-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL</strong>
+</h4>
+
+<p><code>As chosen by partner</code></p>
+
+<p><strong>Recommended:</strong></p>
+
+<p><em>VENDOR_BASE_URL/itinerary/vendor/acknowledge</em></p>
+
+<p><strong>Example:</strong>  </p>
+
+<ul>
+<li>Vendor : googol </li>
+<li>User access token: AY132A871234</li>
+<li>Transaction Id: jkas3204-asljkd123-asdkj12-alksjd134</li>
+<li>
+<p>Api Key(Optional): 2766491asd723</p>
+
+<p>Example Url: <a href="https://www.googol.com/itinerary/vendor/acknowledge?uat=AY132A871234&amp;txnId=jkas3204-asljkd123-asdkj12-alksjd134&amp;apiKey=2766491asd723">https://www.googol.com/itinerary/vendor/acknowledge?uat=AY132A871234&amp;txnId=jkas3204-asljkd123-asdkj12-alksjd134&amp;apiKey=2766491asd723</a></p>
+</li>
+</ul>
+
+<h4>
+<a id="method-2" class="anchor" href="#method-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Method:</strong>
+</h4>
+
+<p><em>POST</em></p>
+
+<h4>
+<a id="url-params-1" class="anchor" href="#url-params-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL Params</strong>
+</h4>
+
+<p><strong>Required:</strong></p>
+
+<p><code>uat : Partner generated user token number</code> <em>Should have one to one mapping with a unique user</em></p>
+
+<p><code>txnId : Partner generated transaction ID</code> <em>Should have one to one mapping with each transaction and login session</em></p>
+
+<p><strong>Optional:</strong></p>
+
+<p><code>apiKey : The provided api key by partner to Routofy to authenticate API requests</code></p>
+
+<h4>
+<a id="headers-2" class="anchor" href="#headers-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Headers</strong>
+</h4>
+
+<p><code>Content-Type = application/json</code></p>
+
+<p><code>Accept = application/json</code></p>
+
+<h4>
+<a id="data-params-2" class="anchor" href="#data-params-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Data Params</strong>
+</h4>
+
+<ul>
+<li>
+<p><strong>Required Post Body:</strong> <a href="#acknowledgement-request-rest-dto">ACKNOWLEDGEMENT REQUEST REST DTO</a></p>
+
+<pre><code>{
+   "amount":2000,
+   "status":"book"
+}
+</code></pre>
+</li>
+<li><p><strong>Explanation:</strong> <code>See</code> <a href="#acknowledgement-request-rest-dto">ACKNOWLEDGEMENT REQUEST REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code></p></li>
+</ul>
+
+<h4>
+<a id="success-response-2" class="anchor" href="#success-response-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Success Response:</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> 200</li>
+<li>
+<strong>Sample Content:</strong> <a href="#acknowledgement-response-rest-dto">ACKNOWLEDGEMENT RESPONSE REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+    "code": "0",
+    "message": "acknowledged"
+}
+</code></pre>
+
+<ul>
+<li>
+<strong>Explanation:</strong> <code>See</code> <a href="#acknowledgement-response-rest-dto">ACKNOWLEDGEMENT RESPONSE REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code>
+</li>
+</ul>
+
+<h4>
+<a id="error-response-2" class="anchor" href="#error-response-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Error Response:</strong>
+</h4>
+
+<p><code>Not required</code></p>
+
+<hr>
+
+<hr>
+
+<h3>
+<a id="apis-to-be-consumed-by-partners" class="anchor" href="#apis-to-be-consumed-by-partners" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>APIs TO BE CONSUMED BY PARTNERS</strong>
+</h3>
+
+<h4>
+<a id="optional-2" class="anchor" href="#optional-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Optional</strong>
+</h4>
+
+<h4>
+<a id="1-purpose-1" class="anchor" href="#1-purpose-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>1. Purpose</strong>
+</h4>
+
+<p><em>Fetching previous booking for a specific transaction ID</em></p>
+
+<h4>
+<a id="url-3" class="anchor" href="#url-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL</strong>
+</h4>
+
+<p><em>/api/v2/itinerary/vendor/retrieve</em></p>
+
+<h4>
+<a id="method-3" class="anchor" href="#method-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Method:</strong>
+</h4>
+
+<p><em>GET</em></p>
+
+<h4>
+<a id="url-params-2" class="anchor" href="#url-params-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL Params</strong>
+</h4>
+
+<p><strong>Required:</strong></p>
+
+<p><code>vendorKey : The provided vendor key for partner</code> <em>Routofy will provide this to partner</em></p>
+
+<p><code>tokenNo : Partner generated user token number</code></p>
+
+<p><code>txnId : Partner generated transaction ID</code> <em>Should be unique for each transaction and login session</em></p>
+
+<h4>
+<a id="headers-3" class="anchor" href="#headers-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Headers</strong>
+</h4>
+
+<p><code>Content-Type = application/json</code></p>
+
+<p><code>Accept = application/json</code></p>
+
+<h4>
+<a id="data-params-3" class="anchor" href="#data-params-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Data Params</strong>
+</h4>
+
+<p><code>Nothing</code></p>
+
+<h4>
+<a id="success-response-3" class="anchor" href="#success-response-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Success Response:</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> 200</li>
+<li>
+<strong>Sample Content:</strong> <a href="#booking-detail-rest-dto">BOOKING DETAIL REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+  "brn": "16AA1001161771",
+  "bd": 1465394572381,
+  "bs": "BOOKED",
+  "pr": 812,
+  "jsdt": 1465488300000,
+  "jedt": 1465510800000,
+  "jscn": "Jaipur",
+  "jdcn": "New Delhi",
+  "jssn": "Jaipur",
+  "jdsn": "New Delhi",
+  "edl": [
+    {
+      "type": "BusBookingDetailRestDto",
+      "vdr": "1",
+      "bs": "CONFIRMED",
+      "rbs": "",
+      "cindex": 1,
+      "oci": {
+        "pr": 842,
+        "m": "b",
+        "du": 22500000,
+        "ds": 262050,
+        "st": 1465488300000,
+        "et": 1465510800000,
+        "dd": 0,
+        "ad": 3600000,
+        "bd": 1800000,
+        "dbd": 900000,
+        "wt": 900000,
+        "sc": "Mateshwari travels sindhi camp bus stand ",
+        "dc": "Filmistan",
+        "sfr": "Mateshwari travels sindhi camp bus stand ",
+        "sto": "Filmistan",
+        "fr": "Jaipur",
+        "to": "New Delhi",
+        "slat": 26.912433624267578,
+        "slong": 75.78726959228516,
+        "dlat": 28.632244110107422,
+        "dlong": 77.2207260131836,
+        "dtzoff": 19800000,
+        "atzoff": 19800000,
+        "dtzid": "Asia/Kolkata",
+        "atzid": "Asia/Kolkata"
+      },
+      "pl": [
+        {
+          "age": 25,
+          "id": 198,
+          "name": "Prateek Grover",
+          "sn": "S",
+          "ic": false,
+          "fpnr": null,
+          "tno": null,
+          "on": true
+        }
+      ],
+      "url": "ticket/16AA1001161771/1",
+      "ioe": true,
+      "cn": "Rishabh     Travels",
+      "bpn": "Mateshwari travels sindhi camp bus stand ",
+      "bt": "Non A/C Seater/Sleeper (2+1)",
+      "pa": "Banagala Bazar Chauraha, Paani Ki Tanki,ashiyana, Near Pwd Colony, Lucknow",
+      "pci": "9718832761/9718832708/9250516432/9213065147//9891323316",
+      "ploc": "Saheed Path",
+      "plm": "Eco Park",
+      "pt": "Thu, Jun 09, 09:10 PM",
+      "fb": {
+        "Base Fare": 800,
+        "Other Taxes": 42
+      }
+    }
+  ],
+  "dtzoff": 19800000,
+  "atzoff": 19800000,
+  "bemail": "prateekgrover.rns@gmail.com",
+  "dtzid": "Asia/Kolkata",
+  "atzid": "Asia/Kolkata",
+  "isint": false,
+  "isrt": false
+}
+</code></pre>
+
+<ul>
+<li>
+<strong>Explanation:</strong> <code>See</code> <a href="#booking-detail-rest-dto">BOOKING DETAIL REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code>
+</li>
+</ul>
+
+<h4>
+<a id="error-response-3" class="anchor" href="#error-response-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Error Response:</strong>
+</h4>
+
+<p><code>See</code> <a href="#routofy-common-error-responses">Routofy common error responses</a> <code>section</code></p>
+
+<hr>
+
+<hr>
+
+<h4>
+<a id="optional-3" class="anchor" href="#optional-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Optional</strong>
+</h4>
+
+<h4>
+<a id="2-purpose-1" class="anchor" href="#2-purpose-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>2. Purpose</strong>
+</h4>
+
+<p><em>Cancellation Summary</em></p>
+
+<h4>
+<a id="url-4" class="anchor" href="#url-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL</strong>
+</h4>
+
+<p><em>/api/v2/itinerary/vendor/cancel/summary</em></p>
+
+<h4>
+<a id="method-4" class="anchor" href="#method-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Method:</strong>
+</h4>
+
+<p><em>POST</em></p>
+
+<h4>
+<a id="url-params-3" class="anchor" href="#url-params-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL Params</strong>
+</h4>
+
+<p><strong>Required:</strong></p>
+
+<p><code>vendorKey : The provided vendor key for partner</code> <em>Routofy will provide this to partner</em></p>
+
+<p><code>uat : partner generated user token number</code></p>
+
+<p><code>txnId : partner generated transaction ID for each transaction</code> <em>Should be unique for each transaction</em></p>
+
+<h4>
+<a id="headers-4" class="anchor" href="#headers-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Headers</strong>
+</h4>
+
+<p><code>Content-Type = application/json</code></p>
+
+<p><code>Accept = application/json</code></p>
+
+<h4>
+<a id="data-params-4" class="anchor" href="#data-params-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Data Params</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Required Post Body:</strong> <a href="#route-cancellation-request-rest-dto">ROUTE CANCELLATION REQUEST REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+    "brn":"dfvdfvdfv",
+    "ecl":[
+        {
+            "co":123,
+            "pdl":[
+                123,
+                456,
+                678,
+                987
+            ]
+        }
+    ],
+    "mnl":false
+}
+</code></pre>
+
+<ul>
+<li>
+<strong>Explantion:</strong> <code>See</code> <a href="#route-cancellation-request-rest-dto">ROUTE CANCELLATION REQUEST REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code>
+</li>
+</ul>
+
+<h4>
+<a id="success-response-4" class="anchor" href="#success-response-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Success Response:</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> 200</li>
+<li>
+<strong>Sample Content:</strong> <a href="#route-cancellation-response-rest-dto">ROUTE CANCELLATION RESPONSE REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+    "cs":{
+          "1":"Confirmed"
+      },
+    "ecl":[
+        {
+            "co": 1,
+            "tf": 2220,
+            "ra": 0,
+            "sc": 2220
+        }
+    ]
+}
+</code></pre>
+
+<ul>
+<li>
+<strong>Explantion:</strong> <code>See</code> <a href="#route-cancellation-response-rest-dto">ROUTE CANCELLATION RESPONSE REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code>
+</li>
+</ul>
+
+<h4>
+<a id="error-response-4" class="anchor" href="#error-response-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Error Response:</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> 200 OK</li>
+<li>
+<strong>Content:</strong> <a href="#route-cancellation-response-rest-dto">ROUTE CANCELLATION RESPONSE REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+    "cs":{
+        "1":"Cancelled"
+    },
+    "ecl":[
+        {
+            "co": 1,
+            "tf": 2220,
+            "ra": -1, //refund amount has -1
+            "sc": 0
+        }
+    ]
+}
+</code></pre>
+
+<ul>
+<li>
+<strong>Possible reason:</strong> <code>Cancellation information not provided by vendor. Offline cancellation request taken.</code>
+</li>
+<li>
+<p><strong>Resolution:</strong> <code>Send the same request again with 'mnl' as true and we will take your request for refund amount offline.</code></p>
+
+<p>OR</p>
+</li>
+<li><p><strong>Code:</strong> 200 OK</p></li>
+<li>
+<strong>Content:</strong> <a href="#route-cancellation-response-rest-dto">ROUTE CANCELLATION RESPONSE REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+    "cs":{
+        "1":"Cancelled"
+    },
+    "ecl":[
+        {
+            "co": 1,
+            "tf": 2220,
+            "ra": -1, //refund amount has -1
+            "sc": -1 //service charge has -1
+        }
+    ]
+}
+</code></pre>
+
+<ul>
+<li>
+<strong>Possible reason:</strong> <code>Unhandled error</code>
+</li>
+<li>
+<p><strong>Resolution:</strong> <code>Mail at support@routofy.com or call at 011-65669966 for assistance.</code></p>
+
+<p><code>See</code> <a href="#routofy-common-error-responses">Routofy common error responses</a> <code>section</code></p>
+</li>
+</ul>
+
+<hr>
+
+<hr>
+
+<h4>
+<a id="optional-4" class="anchor" href="#optional-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Optional</strong>
+</h4>
+
+<h4>
+<a id="3-purpose-1" class="anchor" href="#3-purpose-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>3. Purpose</strong>
+</h4>
+
+<p><em>Cancellation of Booking</em></p>
+
+<h4>
+<a id="url-5" class="anchor" href="#url-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL</strong>
+</h4>
+
+<p><em>/api/v1/itinerary/vendor/cancel</em></p>
+
+<h4>
+<a id="method-5" class="anchor" href="#method-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Method:</strong>
+</h4>
+
+<p><em>POST</em></p>
+
+<h4>
+<a id="url-params-4" class="anchor" href="#url-params-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>URL Params</strong>
+</h4>
+
+<p><strong>Required:</strong></p>
+
+<p><code>vendorKey : The provided vendor key for partner</code> <em>Routofy will provide this to partner</em></p>
+
+<p><code>uat : Partner generated user token number</code></p>
+
+<p><code>txnId : Partner generated transaction ID</code> <em>Should be unique for each transaction and login session</em></p>
+
+<h4>
+<a id="headers-5" class="anchor" href="#headers-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Headers</strong>
+</h4>
+
+<p><code>Content-Type = application/json</code></p>
+
+<p><code>Accept = application/json</code></p>
+
+<h4>
+<a id="data-params-5" class="anchor" href="#data-params-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Data Params</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Required Post Body:</strong> <a href="#route-cancellation-request-rest-dto">ROUTE CANCELLATION REQUEST REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+    "brn":"dfvdfvdfv",
+    "ecl":
+        [
+            {
+                "co":123,
+                "pdl":[
+                    123,
+                    456,
+                    678,
+                    987
+                ]
+            }
+        ],
+    "mnl":false
+}
+</code></pre>
+
+<ul>
+<li>
+<strong>Explanation:</strong> <code>See</code> <a href="#route-cancellation-request-rest-dto">ROUTE CANCELLATION REQUEST REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code>
+</li>
+</ul>
+
+<h4>
+<a id="success-response-5" class="anchor" href="#success-response-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Success Response:</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> 200</li>
+<li>
+<strong>Sample Content:</strong> <a href="#route-cancellation-response-rest-dto">ROUTE CANCELLATION RESPONSE REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+    "cs":{
+        "1":"Cancelled"
+     },
+     "ecl":[
+         {
+             "co": 1,"
+             tf": 2220,"
+             ra": 0,
+             "sc": 2220
+         }
+     ]
+ }
+</code></pre>
+
+<ul>
+<li>
+<strong>Explanation:</strong> <code>See</code> <a href="#route-cancellation-response-rest-dto">ROUTE CANCELLATION RESPONSE REST DTO</a> <code>explanation in</code> <a href="#dto-explanation">DTO explanation</a> <code>section for details.</code>
+</li>
+</ul>
+
+<h4>
+<a id="error-response-5" class="anchor" href="#error-response-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Error Response:</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> 200 OK
+<strong>Content:</strong> <a href="#route-cancellation-response-rest-dto">ROUTE CANCELLATION RESPONSE REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+    "cs":{
+        "1":"Cancelled"
+    },
+    "ecl":[
+        {
+            "co": 1,
+            "tf": 2220,
+            "ra": -1, //refund amount has -1
+            "sc": 0
+        }
+    ]
+}
+</code></pre>
+
+<p><strong>Possible reason:</strong> <code>Cancellation information not provided by vendor. Offline cancellation request taken.</code></p>
+
+<p>OR</p>
+
+<ul>
+<li>
+<strong>Code:</strong> 200 OK
+<strong>Content:</strong> <a href="#route-cancellation-response-rest-dto">ROUTE CANCELLATION RESPONSE REST DTO</a>
+</li>
+</ul>
+
+<pre><code>{
+    "cs":{
+        "1":"Cancelled"
+    },
+    "ecl":[
+        {
+            "co": 1,
+            "tf": 2220,
+            "ra": -1, //refund amount has -1
+            "sc": -1 //service charge has -1
+        }
+    ]
+}
+</code></pre>
+
+<p><strong>Possible reason:</strong> <code>Unhandled error</code>
+ <strong>Resolution:</strong> <code>Mail at support@routofy.com or call at 011-65669966 for assistance.</code></p>
+
+<p><code>See</code> <a href="#routofy-common-error-responses">Routofy common error responses</a> <code>section</code></p>
+
+<hr>
+
+<h4>
+<a id="partner-common-error-responses" class="anchor" href="#partner-common-error-responses" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Partner Common Error Responses</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Format</strong>
+
+<ul>
+<li>
+<strong>Code:</strong> Other than 200 for failed response. </li>
+<li><strong>Content:</strong></li>
+</ul>
+</li>
+</ul>
+
+<pre><code>{
+    "code":"error code here",
+    "message":"error message here"
+}
+</code></pre>
+
+<hr>
+
+<hr>
+
+<h4>
+<a id="routofy-common-error-responses" class="anchor" href="#routofy-common-error-responses" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Routofy Common Error Responses</strong>
+</h4>
+
+<ul>
+<li>
+<strong>Code:</strong> 400 Bad Request</li>
+<li>
+<p><strong>Content:</strong> </p>
+
+<pre><code>{
+    "code":"40",
+    "message":"Vendor key is null or empty"
+}
+</code></pre>
+
+<p>OR</p>
+</li>
+<li><p><strong>Code:</strong> 400 Bad Request</p></li>
+<li>
+<p><strong>Content:</strong></p>
+
+<pre><code>{
+    "code":"41",
+    "message":"User access token is null or empty"
+}
+</code></pre>
+
+<p>OR</p>
+</li>
+<li><p><strong>Code:</strong> 400 Bad Request</p></li>
+<li>
+<p><strong>Content:</strong></p>
+
+<pre><code>{
+    "code":"42",
+    "message":"Transacion ID is null or empty"
+}
+</code></pre>
+
+<p>OR</p>
+</li>
+<li><p><strong>Code:</strong> 401 Unauthorized</p></li>
+<li>
+<p><strong>Content:</strong></p>
+
+<pre><code>{
+    "code":"43",
+    "message":"Invalid vendor key"
+}
+</code></pre>
+
+<p>OR</p>
+</li>
+<li><p><strong>Code:</strong> 401 Unauthorized</p></li>
+<li>
+<p><strong>Content:</strong></p>
+
+<pre><code>{
+    "code":"44",
+    "message":"Invalid user access token"
+}
+</code></pre>
+
+<p>OR</p>
+</li>
+<li><p><strong>Code:</strong> 500 Internal server error</p></li>
+<li><strong>Content:</strong></li>
+</ul>
+
+<pre><code>  {
+      "code":"50",
+      "message":"Could not find bookings for the specified combination of transaction ID, user access token and Vendor Key"
+  }
+</code></pre>
+
+<ul>
+<li>
+<p><strong>Possible reasons:</strong> <code>Transaction ID and User Access Token combination might be wrong</code></p>
+
+<p>OR</p>
+</li>
+<li><p><strong>Code:</strong> 500 Internal server error</p></li>
+<li><strong>Content:</strong></li>
+</ul>
+
+<pre><code>  {
+      "code":"51",
+      "message":"Multiple bookings found for the specified combination of transaction ID, user access token and Vendor Key"
+  }
+</code></pre>
+
+<ul>
+<li>
+<p><strong>Possible reasons:</strong> <code>Duplicate Transaction ID and User Access Token combination was used for booking</code> </p>
+
+<p>OR</p>
+</li>
+<li><p><strong>Code:</strong> 500 Internal server error</p></li>
+<li><strong>Content:</strong></li>
+</ul>
+
+<pre><code>  {
+      "code":"500",
+      "message":"Your request could not be processed"
+  }
+</code></pre>
+
+<ul>
+<li>
+<strong>Possible reason:</strong> <code>Unhandled situation/error</code> </li>
+</ul>
+
+<hr>
+
+<hr>
+
+<h4>
+<a id="dto-explanation" class="anchor" href="#dto-explanation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>DTO Explanation</strong>
+</h4>
+
+<ul>
+<li>
+<p><strong>Authentication</strong></p>
+
+<ul>
+<li>
+<h5>
+<a id="travel-group-rest-dto" class="anchor" href="#travel-group-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TRAVEL GROUP REST DTO</h5>
+
+<ul>
+<li>"fn" - <code>Booker first name</code>
+</li>
+<li>"ln" - <code>Booker last name</code>
+</li>
+<li>"em" - <code>Booker email ID</code>
+</li>
+<li>"mb" - <code>Booker mobile number</code>
+</li>
+<li>"psgrs" - <code>List&lt;</code><a href="#passenger-detail-rest-dto">PassengerDetailRestDto</a><code>&gt; passengerRestDtoList</code> <em>List of all the passengers for whom ticket will be booked</em>
+</li>
+</ul>
+
+<p>NOTE: If travelling passengers' details are not known, send an empty JSON list.</p>
+</li>
+<li>
+<h5>
+<a id="passenger-detail-rest-dto" class="anchor" href="#passenger-detail-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PASSENGER DETAIL REST DTO</h5>
+
+<ul>
+<li>"fn":<code>Passenger first name</code>
+</li>
+<li>"ln":<code>Passenger last name</code>
+</li>
+<li>"em":<code>Passenger email ID</code>
+</li>
+<li>"mobNo":<code>Passenger mobile number</code>
+</li>
+<li>"sx": <code>Passenger gender</code>
+</li>
+<li>"dob":<code>Passenger date of birth in epoch milliseconds</code>
+</li>
+<li>"pp":<code>Passenger passport number</code> <em>Required in case of international booking otherwise empty string</em>
+</li>
+<li>"pi":<code>Passenger passport issue date in epoch milliseconds</code>  <em>Required in case of international booking otherwise 0</em>
+</li>
+<li>"pe":<code>Passenger passport expiry date in epoch milliseconds</code>  <em>Required in case of international booking otherwise 0</em>
+</li>
+<li>"pc":<code>Passenger passport issue country</code>  <em>Required in case of international booking otherwise empty string</em>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization</strong></p>
+
+<ul>
+<li>
+<h5>
+<a id="authorization-request-rest-dto" class="anchor" href="#authorization-request-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AUTHORIZATION REQUEST REST DTO</h5>
+
+<ul>
+<li>"amount" - <code>The amount related to the action if applicable</code>
+</li>
+<li>"action" - <code>The action to be authorized</code> <em>Possible values: "book", "cancel"</em>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="authorization-response-rest-dto" class="anchor" href="#authorization-response-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AUTHORIZATION RESPONSE REST DTO</h5>
+
+<ul>
+<li>"code":<code>Success/Error code string</code> <em>None zero value is error</em>
+</li>
+<li>"message":<code>Success/Error message</code>
+</li>
+<li>"remarks":<code>Any other relevant information</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>ACKNOWLEDGEMENT</strong></p>
+
+<ul>
+<li>
+<h5>
+<a id="acknowledgement-request-rest-dto" class="anchor" href="#acknowledgement-request-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ACKNOWLEDGEMENT REQUEST REST DTO</h5>
+
+<ul>
+<li>"amount" - <code>The amount related to action if applicable</code>
+</li>
+<li>"action" - <code>The action performed</code> <em>Possible values: "book", "cancel"</em>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="acknowledgement-response-rest-dto" class="anchor" href="#acknowledgement-response-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ACKNOWLEDGEMENT RESPONSE REST DTO</h5>
+
+<ul>
+<li>"code":<code>Success code string</code> <em>"0" is success code string</em>
+</li>
+<li>"message":<code>Any relevant information</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Previous Booking</strong></p>
+
+<ul>
+<li>
+<h5>
+<a id="booking-detail-rest-dto" class="anchor" href="#booking-detail-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BOOKING DETAIL REST DTO:</h5>
+
+<ul>
+<li>"brn" - <code>String bookingRefNo</code>
+</li>
+<li>"bd" - <code>Long bookingDate</code>
+</li>
+<li>"bs" - <code>String bookingStatus</code>
+</li>
+<li>"pr" - <code>double price</code>
+</li>
+<li>"jsdt" - <code>Long journeyStartDateAndTime</code>
+</li>
+<li>"jedt" - <code>Long journeyEndDateAndTime</code>
+</li>
+<li>"jscn" - <code>String journeySourceCityName</code>
+</li>
+<li>"jdcn" - <code>String journeyDestinationCityName</code>
+</li>
+<li>"jssn" - <code>String journeySourceStopName</code>
+</li>
+<li>"jdsn" - <code>String journeyDestinationStopName</code>
+</li>
+<li>"edl" - <code>List&lt;</code><a href="#edge-booking-detail-rest-dto">EdgeBookingDetailRestDto</a><code>&gt; edgeBookingDetailRestDtoList</code>
+</li>
+<li>"dtzoff" - <code>Long departureTimeZoneOffset</code> <em>Time Zone Offset is the offset from GMT</em>
+</li>
+<li>"atzoff" - <code>Long arrivalTimeZoneOffset</code>
+</li>
+<li>"bemail" - <code>String bookerEmailId</code>
+</li>
+<li>"dtzid" - <code>String departureTimeZoneId</code> <em>Time Zone ID is like "Asia/Kolkata"</em>
+</li>
+<li>"atzid" - <code>String arrivalTimeZoneId</code>
+</li>
+<li>"isint" - <code>boolean international</code>
+</li>
+<li>"isrt" - <code>boolean roundTrip</code>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="edge-booking-detail-rest-dto" class="anchor" href="#edge-booking-detail-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EDGE BOOKING DETAIL REST DTO:</h5>
+
+<ul>
+<li>"vdr" - <code>String vendor</code> <em>Not needed but still save</em>
+</li>
+<li>"bs" - <code>String bookingStatus</code>
+</li>
+<li>"rbs" - <code>String returnBookingStatus</code> <em>Booking status for return journey</em>
+</li>
+<li>"cindex" - <code>int componentIndex</code> <em>It is a randomly generated integer for every edge including onward journey and return journey</em>
+</li>
+<li>"oci" - <a href="#component-info-rest-dto">ComponentInfoRestDto</a> <code>onwardComponentInfoRestDto</code> <em>Detail about onward journey components</em>
+</li>
+<li>"rci" - <a href="#component-info-rest-dto">ComponentInfoRestDto</a>  <code>returnComponentInfoRestDto</code> <em>Detail about return journey components</em>
+</li>
+<li>"pl" - <code>List&lt;</code><a href="#passenger-detail-rest-dto">PassengerDetailRestDto</a><code>&gt; passengerDetailRestDtoList</code> <em>Detail about passengers</em>
+</li>
+<li>"url" - <code>String ticketUrl</code>
+</li>
+<li>"pnr" - <code>String pnr</code>
+</li>
+<li>"ioe" - <code>boolean onwardEdge</code> <em>Boolean to determine if it is an onward edge</em>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="component-info-rest-dto" class="anchor" href="#component-info-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>COMPONENT INFO REST DTO</h5>
+
+<ul>
+<li>"pr" - <code>Double price</code>
+</li>
+<li>"m" - <code>String travelMode</code> <em>f - flight, b - bus, c - cab, t - train, o - other</em>
+</li>
+<li>"du" - <code>Long travelDuration</code>
+</li>
+<li>"ds" - <code>int distance</code>
+</li>
+<li>"st" - <code>Long departureTime</code>
+</li>
+<li>"et" - <code>Long arrivalTime</code>
+</li>
+<li>"dd" - <code>Long delayInDepartureTime</code>
+</li>
+<li>"ad" - <code>Long delayInArrivalTime</code>
+</li>
+<li>"bd" - <code>Long boardingDuration</code>
+</li>
+<li>"dbd" - <code>Long deBoardingDuration</code>
+</li>
+<li>"wt" - <code>Long waitingTime</code>
+</li>
+<li>"sc" - <code>String sourceStopCode</code> <em>Example: DEL for Delhi</em>
+</li>
+<li>"dc" - <code>String destinationStopCode</code>
+</li>
+<li>"sfr" - <code>String sourceStopName</code>
+</li>
+<li>"sto" - <code>String destinationStopName</code>
+</li>
+<li>"fr" - <code>String sourceCityName</code>
+</li>
+<li>"to" - <code>String destinationCityName</code>
+</li>
+<li>"slat" - <code>Double sourceStopLatitude</code>
+</li>
+<li>"slong" - <code>Double sourceStopLongitude</code>
+</li>
+<li>"dlat" - <code>Double destinationStopLatitude</code>
+</li>
+<li>"dlong" - <code>Double destinationStopLongitude</code>
+</li>
+<li>"dtzoff" - <code>Long departureTimeZoneOffset</code>
+</li>
+<li>"atzoff" - <code>Long arrivalTimeZoneOffset</code>
+</li>
+<li>"dtzid" - <code>String departureTimeZoneId</code>
+</li>
+<li>"atzid" - <code>String arrivalTimeZoneId</code>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="cab-booking-detail-rest-dto-inherits-edge-booking-detail-rest-dto" class="anchor" href="#cab-booking-detail-rest-dto-inherits-edge-booking-detail-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAB BOOKING DETAIL REST DTO inherits EDGE BOOKING DETAIL REST DTO</h5>
+
+<ul>
+<li>"nod" - <code>int numberOfDays</code> <em>Not needed</em>
+</li>
+<li>"vdl" - <code>List&lt;</code><a href="#vehicle-detail-rest-dto">VehicleDetailRestDto</a><code>&gt; vehicleDetailRestDtoList</code> <em>Detail about vehicle</em>
+</li>
+<li>"out" - <code>int travelType</code> <em>Not needed</em>
+</li>
+<li>"fb" - <code>Map&lt;String, Double&gt; fareBreakUp</code> <em>Fare break up desription and value</em>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="vehicle-detail-rest-dto" class="anchor" href="#vehicle-detail-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>VEHICLE DETAIL REST DTO</h5>
+
+<ul>
+<li>"dn" - <code>String driverName</code>
+</li>
+<li>"dp" - <code>String driverPhone</code>
+</li>
+<li>"vn" - <code>String vehicleName</code>
+</li>
+<li>"vs" - <code>int vehicleSeater</code> <em>Number of seats in vehicle</em>
+</li>
+<li>"vnum" - <code>String vehicleNumber</code>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="bus-booking-detail-rest-dto-inherits-edge-booking-detail-rest-dto" class="anchor" href="#bus-booking-detail-rest-dto-inherits-edge-booking-detail-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BUS BOOKING DETAIL REST DTO inherits EDGE BOOKING DETAIL REST DTO</h5>
+
+<ul>
+<li>"cn" - <code>String carrierNam</code>e <em>Which company bus</em>
+</li>
+<li>"bpn" - <code>String boardingPointName</code> <em>Where to board from</em>
+</li>
+<li>"bt" - <code>String busType</code> <em>Type of bus</em>
+</li>
+<li>"pa" - <code>String pickupAddress</code>
+</li>
+<li>"pci" - <code>String pickupContactInfo</code>
+</li>
+<li>"ploc" - <code>String pickupLocation</code>
+</li>
+<li>"plm" - <code>String pickupLandMark</code>
+</li>
+<li>"pt" - <code>String pickupTime</code>
+</li>
+<li>"fb" - <code>Map&lt;String, Double&gt; fareBreakUp</code> <em>Same as cab</em>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="flight-booking-detail-rest-dto-inherits-edge-booking-details-rest-dto" class="anchor" href="#flight-booking-detail-rest-dto-inherits-edge-booking-details-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FLIGHT BOOKING DETAIL REST DTO inherits EDGE BOOKING DETAILS REST DTO</h5>
+
+<ul>
+<li>"sac" - <code>String sourceAirportCode</code> <em>Example : DXB for Dubai Airport</em>
+</li>
+<li>"scit" - <code>String sourceAirportCity</code>
+</li>
+<li>"fc" - <code>String flighpartnerass</code>
+</li>
+<li>"ft" - <code>String fareType</code> //Refundable or non-refundable</li>
+<li>"dac" - <code>String destinationAirportCode</code> <em>Same as above</em>
+</li>
+<li>"dcit" - <code>String destinationAirportCity</code>
+</li>
+<li>"adl" - <code>int adults</code>
+</li>
+<li>"cld" - <code>int children</code>
+</li>
+<li>"inf" - <code>int infants</code>
+</li>
+<li>"sterm" - <code>String startTerminal</code> <em>Which terminal of the airport</em>
+</li>
+<li>"eterm" - <code>String endTerminal</code>
+</li>
+<li>"fb" - <code>Map&lt;String, Double&gt; fareBreakUp</code> <em>Same as bus</em>
+</li>
+<li>"flc" - <code>FlightTravelClassEnum flightTravelClassEnum</code> <em>E - Economy, F - First Class, P - Premium Economy, B - Business</em>
+</li>
+<li>"an" - <code>String airlineName</code>
+</li>
+<li>"iin" - <code>boolean isInternational</code>
+</li>
+<li>"oc" - <code>List&lt;</code><a href="#booked-flight-journey-component-rest-dto">BookedFlightJourneyComponentRestDto</a><code>&gt; onwardComponentRestDtoList</code>
+</li>
+<li>"rc" - <code>List&lt;</code><a href="#booked-flight-journey-component-rest-dto">BookedFlightJourneyComponentRestDto</a><code>&gt; returnComponentRestDtoList</code>
+</li>
+<li>"tn" - <code>List&lt;String&gt; telephoneNo</code>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="booked-flight-journey-component-rest-dto" class="anchor" href="#booked-flight-journey-component-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BOOKED FLIGHT JOURNEY COMPONENT REST DTO</h5>
+
+<ul>
+<li>"dac" - <code>String departureAirport</code>
+</li>
+<li>"dcit" - <code>String departureAirportCity</code>
+</li>
+<li>"aac" - <code>String arrivalAirport</code>
+</li>
+<li>"acit" - <code>String arrivalAirportCity</code>
+</li>
+<li>"fn" - <code>String flightNumber</code>
+</li>
+<li>"alc" - <code>String airlineCode</code>
+</li>
+<li>"aln" - <code>String airlineName</code>
+</li>
+<li>"dt" - <code>Long departureTime</code>
+</li>
+<li>"at" - <code>Long arrivalTime</code>
+</li>
+<li>"sterm" - <code>String startTerminal</code>
+</li>
+<li>"eterm" - <code>String endTerminal</code>
+</li>
+<li>"cib" - <code>String checkInBaggage</code>
+</li>
+<li>"cb" - <code>String cabinBaggage</code>
+</li>
+<li>"sd" - <code>List&lt;</code><a href="#flight-stop-details-info-rest-dto">FlightStopDetailsInfoRestDto</a><code>&gt; stopDetails</code>
+</li>
+<li>"dtzoff" - <code>Long departureTimeZoneOffset</code>
+</li>
+<li>"atzoff" - <code>Long arrivalTimeZoneOffset</code>
+</li>
+<li>"logo" - <code>String airlineLogo</code>
+</li>
+<li>"dtzid" - <code>String departureTimeZoneId</code>
+</li>
+<li>"atzid" - <code>String arrivalTimeZoneId</code>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="flight-stop-details-info-rest-dto-for-connected-flights" class="anchor" href="#flight-stop-details-info-rest-dto-for-connected-flights" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FLIGHT STOP DETAILS INFO REST DTO <em>for connected flights</em>
+</h5>
+
+<ul>
+<li>"in" - <code>BigInteger stopIndex</code> <em>which number of stop</em>
+</li>
+<li>"lac" - <code>String layoverAirport</code>
+</li>
+<li>"dt" - <code>Long departureDateTime</code>
+</li>
+<li>"at" - <code>Long arrivalDateTime</code>
+</li>
+<li>"ld" - <code>BigInteger layoverDuration</code>
+</li>
+<li>"dtzoff" - <code>Long departureTimeZoneOffset</code>
+</li>
+<li>"atzoff" - <code>Long arrivalTimeZoneOffset</code>
+</li>
+<li>"dtzid" - <code>String departureTimeZoneId</code>
+</li>
+<li>"atzid" - <code>String arrivalTimeZoneId</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Cancellation Summary &amp; Cancellation</strong></p>
+
+<ul>
+<li>
+<h5>
+<a id="route-cancellation-request-rest-dto" class="anchor" href="#route-cancellation-request-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ROUTE CANCELLATION REQUEST REST DTO:</h5>
+
+<ul>
+<li>"brn" - <code>String Booking reference number</code>
+</li>
+<li>"ecl" - <code>List&lt;</code><a href="#edge-cancellation-request-rest-dto">EdgeCancellationRequestRestDto</a><code>&gt; edgeCancellationRequestRestList</code>
+</li>
+<li>"mnl" - <code>isManualIntervention</code>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="edge-cancellation-request-rest-dto" class="anchor" href="#edge-cancellation-request-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EDGE CANCELLATION REQUEST REST DTO</h5>
+
+<ul>
+<li>"co" - <code>component index</code> <em>can be found in previous booking response</em>
+</li>
+<li>"pdl" - <code>passenger id list</code> <em>can be found in previous booking response</em>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="route-cancellation-response-rest-dto" class="anchor" href="#route-cancellation-response-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ROUTE CANCELLATION RESPONSE REST DTO:</h5>
+
+<ul>
+<li>"cs" - <code>Map&lt;String,String&gt; componentStatus</code> <em>component index string as key with its status as value.</em>
+</li>
+<li>"ecl" - <code>List&lt;</code><a href="#edge-cancellation-response-rest-dto">EdgeCancellationResponseRestDto</a><code>&gt; edgeCancellationResponseRestDtoList</code>
+</li>
+</ul>
+</li>
+<li>
+<h5>
+<a id="edge-cancellation-response-rest-dto" class="anchor" href="#edge-cancellation-response-rest-dto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EDGE CANCELLATION RESPONSE REST DTO:</h5>
+
+<ul>
+<li>"co" - <code>int componentIndex</code>
+</li>
+<li>"tf" - <code>Double totalFare</code>
+</li>
+<li>"ra" - <code>Double refund amount</code>
+</li>
+<li>"sc" - <code>Double serviceCharge</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/routofiers/API">api</a> is maintained by <a href="https://github.com/routofiers">routofiers</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
