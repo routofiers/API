@@ -29,7 +29,7 @@ _BASE_URL/dashboard/?vendorKey=ABC123&tokenNo=token1&txnId=txn1_
   
 **Recommended:**
 
- VENDOR_BASE_URL/vendor/user/details
+ VENDOR_BASE_URL/vendor/user/details?uat={user access token}&txnId={transaction id}&apiKey={optional api key}
 
 **Example:**  
 
@@ -129,7 +129,7 @@ NOTE: If travelling passenger list is not known, then send empty list (```[]```)
   
 **Recommended:**
 
-_VENDOR_BASE_URL/itinerary/vendor/confirm_
+_VENDOR_BASE_URL/itinerary/vendor/confirm?uat={user access token}&txnId={transaction Id}&apiKey={optional api key}_
 
 **Example:**  
 
@@ -216,7 +216,7 @@ NOTE: **Required** if partner needs to store booking details of each booking.
   
 **Recommended:**
 
-_VENDOR_BASE_URL/itinerary/vendor/acknowledge_
+_VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&txnId={transaction Id}&apiKey={optional api key}_
 
 **Example:**  
 
@@ -293,7 +293,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge_
 
 #### **URL**
 
-  _/api/v2/itinerary/vendor/retrieve_
+  _/api/v2/itinerary/vendor/retrieve?uat={user access token}&txnId={transaction Id}&vendorKey={vendor key}_
 
 #### **Method:**
   
@@ -305,7 +305,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge_
  
    `vendorKey : The provided vendor key for partner` _Routofy will provide this to partner_
 
-   `tokenNo : Partner generated user token number`
+   `uat : Partner generated user token number`
 
    `txnId : Partner generated transaction ID` _Should be unique for each transaction and login session_
 
@@ -423,7 +423,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge_
 
 #### **URL**
 
-  _/api/v2/itinerary/vendor/cancel/summary_
+  _/api/v2/itinerary/vendor/cancel/summary?uat={user access token}&txnId={transaction Id}&vendorKey={vendor key}_
 
 #### **Method:**
   
@@ -546,7 +546,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge_
 
 #### **URL**
 
-  _/api/v1/itinerary/vendor/cancel_
+  _/api/v2/itinerary/vendor/cancel?uat={user access token}&txnId={transaction Id}&vendorKey={vendor key}_
 
 #### **Method:**
   
