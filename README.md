@@ -129,16 +129,16 @@ NOTE: If travelling passenger list is not known, then send empty list (```[]```)
   
 **Recommended:**
 
-_VENDOR_BASE_URL/itinerary/vendor/confirm?uat={user access token}&txnId={transaction Id}&apiKey={optional api key}_
+_VENDOR_BASE_URL/itinerary/vendor/confirm?uat={user access token}&brn={booking reference number}&apiKey={optional api key}_
 
 **Example:**  
 
 - Vendor : googol 
 - User access token: AY132A871234
-- Transaction Id: jkas3204-asljkd123-asdkj12-alksjd134
+- Booking reference number: 16AA1005223141
 - Api Key(Optional): 2766491asd723
 
- Example Url: https://www.googol.com/itinerary/vendor/confirm?uat=AY132A871234&txnId=jkas3204-asljkd123-asdkj12-alksjd134&apiKey=2766491asd723
+ Example Url: https://www.googol.com/itinerary/vendor/confirm?uat=AY132A871234&brn=16AA1005223141&apiKey=2766491asd723
 
 #### **Method:**
   
@@ -149,7 +149,7 @@ _VENDOR_BASE_URL/itinerary/vendor/confirm?uat={user access token}&txnId={transac
  
    `uat : Partner generated user token number` _Should have one to one mapping with a unique user_
 
-   `txnId : Partner generated transaction ID` _Should have one to one mapping with each transaction and login session_
+   `brn : Routofy generated booking reference number` _Is unique for each order created_
    
 **Optional:**
 
@@ -216,16 +216,16 @@ NOTE: **Required** if partner needs to store booking details of each booking.
   
 **Recommended:**
 
-_VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&txnId={transaction Id}&apiKey={optional api key}_
+_VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&brn={booking reference number}&apiKey={optional api key}_
 
 **Example:**  
 
 - Vendor : googol 
 - User access token: AY132A871234
-- Transaction Id: jkas3204-asljkd123-asdkj12-alksjd134
+- Booking Reference Number: 16AA1005223141
 - Api Key(Optional): 2766491asd723
 
- Example Url: https://www.googol.com/itinerary/vendor/acknowledge?uat=AY132A871234&txnId=jkas3204-asljkd123-asdkj12-alksjd134&apiKey=2766491asd723
+ Example Url: https://www.googol.com/itinerary/vendor/acknowledge?uat=AY132A871234&brn=16AA1005223141&apiKey=2766491asd723
  
 #### **Method:**
   
@@ -237,7 +237,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&txnId={tra
 
    `uat : Partner generated user token number` _Should have one to one mapping with a unique user_
 
-   `txnId : Partner generated transaction ID` _Should have one to one mapping with each transaction and login session_
+   `brn : Routofy generated booking reference number` _Is unique for each order created_
 
   **Optional:**
 
@@ -289,11 +289,11 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&txnId={tra
 #### **Optional**
 #### **1. Purpose**
 
-  _Fetching previous booking for a specific transaction ID_
+  _Fetching previous booking for a specific booking reference number_
 
 #### **URL**
 
-  _/api/v2/itinerary/vendor/retrieve?uat={user access token}&txnId={transaction Id}&vendorKey={vendor key}_
+  _/api/v2/itinerary/vendor/retrieve?uat={user access token}&brn={booking reference number}&vendorKey={vendor key}_
 
 #### **Method:**
   
@@ -307,7 +307,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&txnId={tra
 
    `uat : Partner generated user token number`
 
-   `txnId : Partner generated transaction ID` _Should be unique for each transaction and login session_
+   `brn : Routofy generated booking reference number` _Is unique for each order created_
 
 ####  **Headers**
 
@@ -423,7 +423,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&txnId={tra
 
 #### **URL**
 
-  _/api/v2/itinerary/vendor/cancel/summary?uat={user access token}&txnId={transaction Id}&vendorKey={vendor key}_
+  _/api/v2/itinerary/vendor/cancel/summary?uat={user access token}&brn={booking reference number}&vendorKey={vendor key}_
 
 #### **Method:**
   
@@ -437,7 +437,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&txnId={tra
 
   `uat : partner generated user token number`
 
-  `txnId : partner generated transaction ID for each transaction` _Should be unique for each transaction_
+  `brn : Routofy generated booking reference number` _Is unique for each order created_
 
 ####  **Headers**
    
@@ -546,7 +546,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&txnId={tra
 
 #### **URL**
 
-  _/api/v2/itinerary/vendor/cancel?uat={user access token}&txnId={transaction Id}&vendorKey={vendor key}_
+  _/api/v2/itinerary/vendor/cancel?uat={user access token}&brn={booking reference number}&vendorKey={vendor key}_
 
 #### **Method:**
   
@@ -560,7 +560,7 @@ _VENDOR_BASE_URL/itinerary/vendor/acknowledge?uat={user access token}&txnId={tra
 
    `uat : Partner generated user token number`
 
-   `txnId : Partner generated transaction ID` _Should be unique for each transaction and login session_
+   `brn : Routofy generated booking reference number` _Is unique for each order created_
 
 ####  **Headers**
    
